@@ -1,42 +1,169 @@
-import { Tilt } from 'react-tilt';
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
-import { git, github } from "../assets";
+import {
+  github,
+  html,
+  css,
+  javascript,
+  reactjs,
+  tailwind,
+  nodejs,
+  sql,
+  nav,
+  php,
+  jquery,
+  bootstrap,
+  git,
+  docker,
+  typescript,
+  redux,
+  mongodb,
+  figma,
+  threejs,
+} from "../assets";
 import { SectionWrapper } from "../hoc";
 import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 
-const ProjectCard = ({ index, name, description, tags, image, source_code_link }) => {
+// Every image dropped into src/assets/projects/ is picked up automatically
+const projectImages = import.meta.glob("../assets/projects/*", { eager: true, import: "default" });
+const getProjectImage = (image) => projectImages[`../assets/projects/${image}`] ?? image;
+
+// Tag name -> tech icon. Tags without a match simply render as text.
+const techIcons = {
+  html, html5: html,
+  css, css3: css,
+  javascript, js: javascript,
+  typescript, ts: typescript,
+  reactjs, react: reactjs,
+  tailwind, tailwindcss: tailwind,
+  nodejs, node: nodejs,
+  sql, sqlserver: sql, mssql: sql,
+  nav, businesscentral: nav, dbc365: nav,
+  php,
+  jquery,
+  bootstrap,
+  git,
+  docker,
+  redux,
+  mongodb,
+  figma,
+  threejs,
+};
+const iconFor = (tagName) => techIcons[tagName.toLowerCase().replace(/[\s._-]/g, "")];
+
+const tagName = (tag) => (typeof tag === "string" ? tag : tag.name);
+
+const ProjectRow = ({
+  index,
+  name,
+  description,
+  category,
+  year,
+  tags = [],
+  highlights = [],
+  image,
+  images,
+  source_code_link,
+}) => {
+  const gallery = images?.length ? images : image ? [image] : [];
+  const [active, setActive] = useState(0);
+  const imageFirst = index % 2 === 0;
+  const meta = [category, year].filter(Boolean).join(" · ");
+
   return (
-    <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
-      <Tilt options={{ max: 45, scale: 1, speed: 450 }} className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full">
-        
-        <div className="relative w-full h-[230px]">
-          <img src={image} alt={name} className="w-full h-full object-cover rounded-2xl" />
-          <div className="absolute inset-0 flex justify-end m-3 card-img-hover">
-            {/* <div onClick={() => window.open(source_code_link, "_blank")} className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer">
-              <img src={github} alt="github" className="w-1/2 h-1/2 object-contain" />
-            </div> */}
+    <motion.div
+      variants={fadeIn(imageFirst ? "right" : "left", "spring", 0.1, 0.9)}
+      className={`flex flex-col ${imageFirst ? "lg:flex-row" : "lg:flex-row-reverse"} gap-8 lg:gap-14 items-center`}
+    >
+      <div className="w-full lg:w-1/2">
+        {gallery.length > 0 && (
+          <div className="bg-tertiary rounded-2xl overflow-hidden shadow-card">
+            <div className="flex items-center gap-2 px-4 py-3 bg-black-200">
+              <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+              <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
+              <span className="w-3 h-3 rounded-full bg-[#28c840]" />
+            </div>
+            <img
+              src={getProjectImage(gallery[active])}
+              alt={name}
+              className="w-full h-[240px] sm:h-[320px] object-cover object-top"
+            />
           </div>
-        </div>
+        )}
 
-        <div className="mt-5">
-          <h3 className="text-white font-bold text-[24px]">{name}</h3>
-          <p className="mt-2 text-secondary text-[14px]">{description}</p>
-        </div>
+        {gallery.length > 1 && (
+          <div className="mt-4 flex flex-wrap gap-3">
+            {gallery.map((img, i) => (
+              <button
+                key={img}
+                type="button"
+                onClick={() => setActive(i)}
+                aria-label={`ดูรูปที่ ${i + 1} ของ ${name}`}
+                aria-current={i === active}
+                className={`w-20 h-14 rounded-lg overflow-hidden border-2 transition-opacity ${
+                  i === active ? "border-[#915EFF]" : "border-transparent opacity-50 hover:opacity-100"
+                }`}
+              >
+                <img src={getProjectImage(img)} alt="" className="w-full h-full object-cover object-top" />
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
 
-        <div className="mt-4 flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <p key={tag.name} className={`text-[14px] ${tag.color}`}>
-              #{tag.name}
-            </p>
-          ))}
-        </div>
-      </Tilt>
+      <div className="w-full lg:w-1/2">
+        {meta && <p className="text-secondary text-[14px] uppercase tracking-wider">{meta}</p>}
+
+        <h3 className="text-white font-bold text-[28px] sm:text-[34px] mt-1">{name}</h3>
+
+        <p className="mt-4 text-secondary text-[16px] leading-[28px]">{description}</p>
+
+        {highlights.length > 0 && (
+          <ul className="mt-6 flex flex-col gap-3">
+            {highlights.map((highlight) => (
+              <li key={highlight} className="flex gap-3 text-white-100 text-[15px] leading-[26px]">
+                <span className="text-[#915EFF] leading-[26px]">▸</span>
+                <span>{highlight}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {tags.length > 0 && (
+          <div className="mt-7 flex flex-wrap gap-3">
+            {tags.map((tag) => {
+              const label = tagName(tag);
+              const icon = iconFor(label);
+              return (
+                <span
+                  key={label}
+                  className="flex items-center gap-2 bg-tertiary rounded-lg px-3 py-2 text-secondary text-[13px]"
+                >
+                  {icon && <img src={icon} alt="" className="w-4 h-4 object-contain" />}
+                  {label}
+                </span>
+              );
+            })}
+          </div>
+        )}
+
+        {source_code_link && source_code_link !== "#" && (
+          <button
+            type="button"
+            onClick={() => window.open(source_code_link, "_blank")}
+            className="mt-7 flex items-center gap-2 bg-tertiary hover:bg-black-200 transition-colors rounded-lg px-5 py-3 text-white text-[14px]"
+          >
+            <img src={github} alt="" className="w-5 h-5 object-contain" />
+            ดูซอร์สโค้ด
+          </button>
+        )}
+      </div>
     </motion.div>
-  )
-}
+  );
+};
 
 const Works = () => {
   return (
@@ -56,9 +183,9 @@ const Works = () => {
         </motion.p>
       </div>
 
-      <div className="mt-20 flex flex-wrap gap-7">
+      <div className="mt-20 flex flex-col gap-20 lg:gap-28">
         {projects.map((project, index) => (
-          <ProjectCard key={`project-${index}`} index={index} {...project} />
+          <ProjectRow key={`project-${index}`} index={index} {...project} />
         ))}
       </div>
     </>

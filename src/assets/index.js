@@ -36,8 +36,6 @@ import anajakbakery from './company/anajakbakery.png';
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
-import purchase from "./purchase.jpg";
-import timeattendance from "./timeattendance.jpg";
 
 export {
   logo,
@@ -76,8 +74,6 @@ export {
   carrent,
   jobit,
   tripguide,
-  purchase,
-  timeattendance,
 
   cat,
   anajakbakery,

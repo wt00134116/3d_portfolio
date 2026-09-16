@@ -21,13 +21,8 @@ import {
     cat,
     anajakbakery,
 
-    carrent,
-    jobit,
-    tripguide,
-    purchase,
-    timeattendance,
-
   } from "../assets";
+  import projects from "./projects";
   
   export const navLinks = [
     {
@@ -172,51 +167,6 @@ import {
       designation: "CTO",
       company: "456 Enterprises",
       image: "https://randomuser.me/api/portraits/women/6.jpg",
-    },
-  ];
-  
-  const projects = [
-    {
-      name: "Purchase Web",
-      description:
-        "เป็นเว็บไซต์ที่สร้างมาเพื่อบริหารข้อมูลการคลัง การจัดซื้อสินค้าของบริษัท รวมทั้งระบบเช็คช่องราคา POS โปรโมชั่นและการทำโปรโมชั่นสินค้าแยกย่อยต่างๆมากมาย โดยมีการเชื่อมต่อ API ไปยัง Business Central DBC365 เพื่อเช็คกับใบสั่งซื้อในระบบ NAV ด้วย",
-      tags: [
-        {
-          name: "php",
-          color: "blue-text-gradient",
-        },
-        {
-          name: "sqlserver",
-          color: "green-text-gradient",
-        },
-        {
-          name: "bootstrap",
-          color: "pink-text-gradient",
-        },
-      ],
-      image: purchase,
-      source_code_link: "#",
-    },
-    {
-      name: "Time Attendance",
-      description:
-        "เป็นเว็บแอพลิเคชั่นที่สร้างขึ้นมาเพื่อให้พนักงานสามารถเช็คเวลาในการแสกนเข้างาน แสกนออกงานได้",
-      tags: [
-        {
-          name: "php",
-          color: "blue-text-gradient",
-        },
-        {
-          name: "sqlserver",
-          color: "green-text-gradient",
-        },
-        {
-          name: "css",
-          color: "pink-text-gradient",
-        },
-      ],
-      image: timeattendance,
-      source_code_link: "#",
     },
   ];
   
