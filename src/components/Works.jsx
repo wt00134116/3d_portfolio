@@ -89,7 +89,7 @@ const ProjectRow = ({
             <img
               src={getProjectImage(gallery[active])}
               alt={name}
-              className="w-full h-[240px] sm:h-[320px] object-cover object-top"
+              className="w-full aspect-[16/10] object-cover object-top"
             />
           </div>
         )}
