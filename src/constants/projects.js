@@ -16,6 +16,46 @@
 
 const projects = [
   {
+    name: "SOD — Sales Order Data Entry",
+    category: "ระบบบันทึกใบสั่งขาย × ERP",
+    year: "2026",
+    description:
+      "เว็บแอปสำหรับคีย์ใบสั่งขายของธุรกิจเบเกอรี่ขายส่ง เชื่อมต่อกับ Microsoft Dynamics 365 Business Central ให้พนักงานบันทึกออเดอร์ ค้นหาราคา และส่งเอกสารเข้าระบบ ERP ได้ในที่เดียว",
+    highlights: [
+      "คีย์ออเดอร์แบบ POS รองรับสแกนบาร์โค้ดและคีย์ลัด F1/F2/F3 ดึงราคาอัตโนมัติ พร้อมแสดงประวัติการสั่งของลูกค้า",
+      "คำนวณราคาหลายระดับ (ลูกค้าเฉพาะราย › สาขา › กลุ่มราคา › ราคาทั่วไป) รองรับราคาขั้นบันไดตามจำนวนและโปรโมชั่น",
+      "Background worker ซิงก์ข้อมูลหลักจาก Business Central ผ่าน OAuth2/OData และส่งออเดอร์ผ่านคิว พร้อมหน้าจัดการออเดอร์ที่ส่งไม่สำเร็จ",
+      "มี Dashboard, สิทธิ์ผู้ใช้ด้วย JWT, Audit Log และ deploy บน Windows Server ด้วย PM2",
+    ],
+    tags: ["react", "typescript", "nodejs", "sqlserver", "docker", "Business Central"],
+    images: [
+      "sod-01-dashboard.jpg",
+      "sod-02-order-entry.jpg",
+      "sod-03-order-list.jpg",
+      "sod-04-price-lookup.jpg",
+    ],
+  },
+  {
+    name: "InvoiceCheck",
+    category: "ระบบติดตามวางบิลและเก็บเงิน",
+    year: "2026",
+    description:
+      "เว็บแอปติดตามเอกสารวางบิลและใบกำกับภาษีตั้งแต่ออกจากบริษัทไปกับรอบรถส่งของ จนถึงการเก็บเงินกลับมา โดยดึงเอกสารจาก Business Central อัตโนมัติ",
+    highlights: [
+      "จัดรอบส่งของ ผูกเอกสาร รถ และพนักงานขนส่ง แล้วคีย์ยอดเงินที่เก็บกลับมาได้ทั้งเงินสด เงินโอน และเช็ค",
+      "สรุปยอดคงค้างรายลูกค้า พร้อมรับชำระแบบแบ่งจ่ายและติดตามสถานะเช็ค",
+      "รายงาน KPI ของพนักงานขนส่ง: จำนวนรอบ ยอดที่ออกไปส่ง ยอดเก็บได้ และ % การเก็บเงิน",
+      "ซิงก์ใบกำกับ ใบวางบิล และใบลดหนี้จาก Business Central ผ่าน OData และบันทึกส่วนต่างเมื่อยอดใน BC เปลี่ยน",
+    ],
+    tags: ["react", "typescript", "nodejs", "Prisma", "sqlserver", "Business Central"],
+    images: [
+      "invoicecheck-01-customer-ar.jpg",
+      "invoicecheck-02-kpi.jpg",
+      "invoicecheck-03-run-detail.jpg",
+      "invoicecheck-04-delivery-runs.jpg",
+    ],
+  },
+  {
     name: "Purchase Web",
     category: "ระบบจัดซื้อ / คลังสินค้า",
     description:
