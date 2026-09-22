@@ -37,7 +37,7 @@ const techIcons = {
   css, css3: css,
   javascript, js: javascript,
   typescript, ts: typescript,
-  reactjs, react: reactjs,
+  reactjs, react: reactjs, reactnative: reactjs,
   tailwind, tailwindcss: tailwind,
   nodejs, node: nodejs,
   sql, sqlserver: sql, mssql: sql,
