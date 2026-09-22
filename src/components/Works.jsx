@@ -66,6 +66,7 @@ const ProjectRow = ({
   highlights = [],
   image,
   images,
+  stats = [],
   source_code_link,
 }) => {
   const gallery = images?.length ? images : image ? [image] : [];
@@ -76,21 +77,37 @@ const ProjectRow = ({
   return (
     <motion.div
       variants={fadeIn(imageFirst ? "right" : "left", "spring", 0.1, 0.9)}
+      // Each row animates on its own entry: the section can be many screens tall
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.15 }}
       className={`flex flex-col ${imageFirst ? "lg:flex-row" : "lg:flex-row-reverse"} gap-8 lg:gap-14 items-center`}
     >
       <div className="w-full lg:w-1/2">
-        {gallery.length > 0 && (
+        {(gallery.length > 0 || stats.length > 0) && (
           <div className="bg-tertiary rounded-2xl overflow-hidden shadow-card">
             <div className="flex items-center gap-2 px-4 py-3 bg-black-200">
               <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
               <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
               <span className="w-3 h-3 rounded-full bg-[#28c840]" />
             </div>
-            <img
-              src={getProjectImage(gallery[active])}
-              alt={name}
-              className="w-full aspect-[16/10] object-cover object-top"
-            />
+            {gallery.length > 0 ? (
+              <img
+                src={getProjectImage(gallery[active])}
+                alt={name}
+                className="w-full aspect-[16/10] object-cover object-top"
+              />
+            ) : (
+              // Back-end work with nothing to screenshot: show its key numbers in the same frame
+              <div className="w-full aspect-[16/10] grid grid-cols-2 gap-px bg-black-200">
+                {stats.slice(0, 4).map((stat) => (
+                  <div key={stat.label} className="bg-tertiary flex flex-col justify-center px-6">
+                    <span className="text-white font-black text-[36px] sm:text-[48px] leading-none">{stat.value}</span>
+                    <span className="mt-3 text-secondary text-[14px]">{stat.label}</span>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         )}
 

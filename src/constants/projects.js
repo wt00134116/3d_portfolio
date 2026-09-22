@@ -56,6 +56,44 @@ const projects = [
     ],
   },
   {
+    name: "AB Customization",
+    category: "Extension บน Business Central",
+    description:
+      "ส่วนขยายของ Microsoft Dynamics 365 Business Central เขียนด้วยภาษา AL เพิ่มฟิลด์ หน้าจอ รายงาน และตรรกะเฉพาะของบริษัท ต่อยอดจาก localization ภาษีไทย",
+    highlights: [
+      "รายงานและแบบฟอร์มเอกสาร 28 ชุด เช่น ใบกำกับภาษี ใบสั่งซื้อ ใบเสนอราคาพร้อมรูปสินค้า ใบวางบิล และใบส่งของ",
+      "ขยายตารางมาตรฐาน (ลูกค้า ผู้ขาย ราคาขาย/ซื้อ เอกสารขาย/ซื้อ) และเพิ่มตารางประวัติสินค้าคงคลังแยกตามคลัง",
+      "เพิ่มหน้าข้อมูลหัวเอกสารและรายการ (ขาย ซื้อ รับคืน ลดหนี้) สำหรับให้ระบบภายนอกดึงผ่าน OData",
+      "Codeunit สำหรับปล่อยออเดอร์จากระบบ SOD และ event subscriber ตอน post เอกสารขาย",
+    ],
+    tags: ["Business Central", "AL", "OData", "RDLC"],
+    stats: [
+      { value: "110", label: "AL objects" },
+      { value: "55", label: "หน้าจอ / page extension" },
+      { value: "28", label: "รายงานและแบบฟอร์ม" },
+      { value: "18", label: "ตาราง / table extension" },
+    ],
+  },
+  {
+    name: "DBC365 Sync",
+    category: "ระบบซิงก์ข้อมูล ERP",
+    description:
+      "Node.js service ดึงข้อมูลจาก Business Central ผ่าน OData API มาเก็บเป็นสำเนาใน SQL Server ของบริษัท ให้ระบบภายในและรายงานอ่านได้เร็วโดยไม่ต้องยิง BC ตรง",
+    highlights: [
+      "ซิงก์ข้อมูล 11 ชุด เช่น ลูกค้า ผู้ขาย ใบสั่งซื้อ ใบสั่งขาย ใบกำกับ และใบลดหนี้ ตามรอบเวลาด้วย node-cron",
+      "ยิง OData แบบแบ่งหน้าพร้อม OAuth2 token และเลือกเฉพาะฟิลด์ที่ใช้ เพื่อลดภาระฝั่ง BC",
+      "สคริปต์ backfill ย้อนหลังแบบแบ่งช่วงวัน รันซ้ำได้ไม่ซ้ำข้อมูล และหยุดกลางคันได้อย่างปลอดภัย",
+      "เป็นฐานข้อมูลกลางให้ระบบภายใน เช่น InvoiceCheck ดึงใบกำกับได้ในไม่กี่วินาที",
+    ],
+    tags: ["nodejs", "sqlserver", "Business Central", "OData"],
+    stats: [
+      { value: "11", label: "ชุดข้อมูลที่ซิงก์จาก BC" },
+      { value: "15 นาที", label: "รอบซิงก์ในเวลาทำงาน" },
+      { value: "6", label: "สคริปต์ backfill ย้อนหลัง" },
+      { value: "OData", label: "เชื่อมต่อผ่าน OAuth2" },
+    ],
+  },
+  {
     name: "Purchase Web",
     category: "ระบบจัดซื้อ / คลังสินค้า",
     description:
