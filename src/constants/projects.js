@@ -71,6 +71,25 @@ const projects = [
     images: ["oilio-01-screens.jpg"],
   },
   {
+    name: "Check Promotion",
+    category: "ระบบตรวจสอบโปรโมชั่น",
+    year: "2026",
+    description:
+      "เว็บแอปภายในสำหรับตรวจยอดการใช้โปรโมชั่นจากข้อมูลการขายหน้าร้าน (POS) ดูได้ทันทีว่าแต่ละโปรฯ ขายได้กี่ชิ้น กี่บิล และให้ส่วนลดไปเท่าไหร่",
+    highlights: [
+      "กรองด้วยรหัสโปรโมชั่นและรหัสสินค้าได้หลายตัวพร้อมกัน พร้อมช่วงเวลาแบบปี / เดือน / วัน หรือช่วงวันที่",
+      "ช่องค้นหาแนะนำรหัสพร้อมชื่อโปรโมชั่น / สินค้าอัตโนมัติขณะพิมพ์",
+      "การ์ดสรุปจำนวนบิล ส่วนลดรวม และจำนวนที่ขาย พร้อม Export เป็น Excel",
+      "ประกอบ SQL แบบ parameterized กัน SQL injection และมี unit test ครอบคลุมตัวสร้าง query",
+    ],
+    tags: ["react", "Ant Design", "nodejs", "sqlserver"],
+    images: [
+      "checkpromo-01-filtered.jpg",
+      "checkpromo-02-results.jpg",
+      "checkpromo-03-suggest.jpg",
+    ],
+  },
+  {
     name: "AB Customization",
     category: "Extension บน Business Central",
     description:
