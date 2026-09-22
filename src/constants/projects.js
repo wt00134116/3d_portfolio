@@ -71,6 +71,21 @@ const projects = [
     images: ["oilio-01-screens.jpg"],
   },
   {
+    name: "MechFace",
+    category: "แอป Apple Watch · หน้าปัดนาฬิกากลไก",
+    year: "2026",
+    description:
+      "แอป watchOS ที่แสดงหน้าปัดนาฬิกากลไกแบบเคลื่อนไหว มีเฟืองและจักรตั้งเวลาหมุนจริง พร้อมช่องข้อมูลที่ผู้ใช้เลือกเองได้ และ complication สำหรับหน้าปัดของ Apple",
+    highlights: [
+      "วาดหน้าปัดกลไกด้วย SwiftUI ทั้งเข็ม เฟือง และจักรตั้งเวลาที่เคลื่อนไหวตามเวลาจริง",
+      "ช่องข้อมูล 3 ช่อง เลือกได้จาก 5 แหล่ง: วันที่ แบตเตอรี่ อัตราการเต้นหัวใจ อุณหภูมิ และเวลาพระอาทิตย์ขึ้น-ตก",
+      "ขอสิทธิ์ HealthKit และตำแหน่ง พร้อมจัดการกรณีผู้ใช้ปฏิเสธ ดึงสภาพอากาศจาก Open-Meteo",
+      "แยกตรรกะหลักเป็น Swift Package พร้อม unit test และมี complication ผ่าน WidgetKit",
+    ],
+    tags: ["Swift", "SwiftUI", "watchOS", "WidgetKit"],
+    images: ["mechface-01-watch.jpg"],
+  },
+  {
     name: "Check Promotion",
     category: "ระบบตรวจสอบโปรโมชั่น",
     year: "2026",
@@ -88,6 +103,33 @@ const projects = [
       "checkpromo-02-results.jpg",
       "checkpromo-03-suggest.jpg",
     ],
+  },
+  {
+    name: "Traffic POS",
+    category: "จอแสดงคิวจัดออเดอร์",
+    description:
+      "จอแสดงสถานะการจัดสินค้าแบบเรียลไทม์สำหรับเปิดบนทีวีในคลังสินค้า แยกหน้าค้าปลีกและค้าส่งของแต่ละสาขา ให้ทีมรู้ว่าออเดอร์ไหนกำลังจัด ใครจัด และจะเสร็จเมื่อไหร่",
+    highlights: [
+      "ดึงสถานะออเดอร์จากระบบ WMS และรีเฟรชตารางอัตโนมัติโดยไม่ต้องโหลดหน้าใหม่",
+      "คำนวณเวลาที่คาดว่าจะเสร็จจากจำนวนรายการในออเดอร์ และไฮไลต์สีแดงเมื่อจัดเสร็จช้ากว่าที่คาด",
+      "แยกสีตามสถานะ รอคิว / กำลังจัด / จัดเสร็จแล้ว อ่านได้จากระยะไกล",
+      "แสดงหมายเหตุของใบสั่งขายจาก Business Central เช่น เวลาส่งหรือลูกค้ามารับเอง",
+    ],
+    tags: ["php", "javascript", "sqlserver"],
+    images: ["traffics-01-wholesale.jpg", "traffics-02-retail.jpg", "traffics-03-index.jpg"],
+  },
+  {
+    name: "Dashboard PO",
+    category: "Dashboard ใบสั่งซื้อ",
+    description:
+      "Dashboard สรุปใบสั่งซื้อ (PO) ของฝ่ายจัดซื้อ แยกตามเจ้าหน้าที่จัดซื้อ พร้อม API ที่อ่านข้อมูล PO ซึ่งซิงก์มาจาก Business Central",
+    highlights: [
+      "สรุปจำนวน PO และมูลค่ารวม VAT ต่อเจ้าหน้าที่จัดซื้อ รีเฟรชอัตโนมัติทุก 1 นาที",
+      "เลือกช่วงวันที่เพื่อดูสรุปย้อนหลังจากประวัติ PO",
+      "API แยกด้วย Express + mssql ตรวจรูปแบบวันที่และใช้ parameterized query",
+    ],
+    tags: ["react", "nodejs", "sqlserver"],
+    images: ["dashboardpo-01-summary.jpg", "dashboardpo-02-logs.jpg"],
   },
   {
     name: "AB Customization",
