@@ -18,7 +18,6 @@ const projects = [
   {
     name: "SOD — Sales Order Data Entry",
     category: "ระบบบันทึกใบสั่งขาย × ERP",
-    year: "2026",
     description:
       "เว็บแอปสำหรับคีย์ใบสั่งขายของธุรกิจเบเกอรี่ขายส่ง เชื่อมต่อกับ Microsoft Dynamics 365 Business Central ให้พนักงานบันทึกออเดอร์ ค้นหาราคา และส่งเอกสารเข้าระบบ ERP ได้ในที่เดียว",
     highlights: [
@@ -39,7 +38,6 @@ const projects = [
   {
     name: "InvoiceCheck",
     category: "ระบบติดตามวางบิลและเก็บเงิน",
-    year: "2026",
     description:
       "เว็บแอปติดตามเอกสารวางบิลและใบกำกับภาษีตั้งแต่ออกจากบริษัทไปกับรอบรถส่งของ จนถึงการเก็บเงินกลับมา โดยดึงเอกสารจาก Business Central อัตโนมัติ",
     highlights: [
@@ -60,7 +58,6 @@ const projects = [
   {
     name: "Oilio",
     category: "แอปมือถือ · ราคาน้ำมันรายวัน",
-    year: "2026",
     description:
       "แอป iOS/Android สำหรับเช็คราคาน้ำมันขายปลีกเขตกรุงเทพฯ และปริมณฑล เทียบ 9 ยี่ห้อได้ในหน้าเดียว พร้อมส่วนต่างจากราคาก่อนหน้าและกราฟย้อนหลัง",
     highlights: [
@@ -76,7 +73,6 @@ const projects = [
   {
     name: "MechFace",
     category: "แอป Apple Watch · หน้าปัดนาฬิกากลไก",
-    year: "2026",
     description:
       "แอป watchOS ที่แสดงหน้าปัดนาฬิกากลไกแบบเคลื่อนไหว มีเฟืองและจักรตั้งเวลาหมุนจริง พร้อมช่องข้อมูลที่ผู้ใช้เลือกเองได้ และ complication สำหรับหน้าปัดของ Apple",
     highlights: [
@@ -92,7 +88,6 @@ const projects = [
   {
     name: "Check Promotion",
     category: "ระบบตรวจสอบโปรโมชั่น",
-    year: "2026",
     description:
       "เว็บแอปภายในสำหรับตรวจยอดการใช้โปรโมชั่นจากข้อมูลการขายหน้าร้าน (POS) ดูได้ทันทีว่าแต่ละโปรฯ ขายได้กี่ชิ้น กี่บิล และให้ส่วนลดไปเท่าไหร่",
     highlights: [

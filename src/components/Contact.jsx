@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 
 import { styles } from '../styles';
+import { github } from '../assets';
 import { EarthCanvas } from './canvas';
 import { SectionWrapper } from '../hoc';
 import { slideIn } from '../utils/motion';
@@ -73,7 +74,26 @@ const Contact = () => {
         <p className={styles.sectionSubText}>ติดต่อ</p>
         <h3 className={styles.sectionHeadText}>ข้อมูลติดต่อ</h3>
 
-        <form ref={formRef} onSubmit={handleSubmit} className="mt-12 flex flex-col gap-8">
+        {/* ช่องทางติดต่อตรง เผื่อผู้ชมไม่สะดวกกรอกฟอร์ม */}
+        <div className="mt-6 flex flex-wrap gap-3">
+          <a
+            href="mailto:popandcat@hotmail.com"
+            className="flex items-center gap-2 bg-tertiary hover:bg-black-200 transition-colors rounded-lg px-4 py-3 text-white text-[14px]"
+          >
+            popandcat@hotmail.com
+          </a>
+          <a
+            href="https://github.com/wt00134116"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-2 bg-tertiary hover:bg-black-200 transition-colors rounded-lg px-4 py-3 text-white text-[14px]"
+          >
+            <img src={github} alt="" className="w-5 h-5 object-contain" />
+            github.com/wt00134116
+          </a>
+        </div>
+
+        <form ref={formRef} onSubmit={handleSubmit} className="mt-8 flex flex-col gap-8">
           {/* Name */}
           <label className="flex flex-col">
             <span className="text-white font-medium mb-4">
