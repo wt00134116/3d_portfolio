@@ -34,6 +34,7 @@ const projects = [
       "sod-03-order-list.jpg",
       "sod-04-price-lookup.jpg",
     ],
+    imageNote: "ภาพประกอบแคปจากระบบจริงที่รันบนเครื่องพัฒนา โดยใช้ข้อมูลจำลองทั้งหมด ไม่ใช่ข้อมูลของบริษัท",
   },
   {
     name: "InvoiceCheck",
@@ -54,6 +55,7 @@ const projects = [
       "invoicecheck-03-run-detail.jpg",
       "invoicecheck-04-delivery-runs.jpg",
     ],
+    imageNote: "ภาพประกอบแคปจากระบบจริงที่รันบนเครื่องพัฒนา โดยใช้ข้อมูลจำลองทั้งหมด ไม่ใช่ข้อมูลของบริษัท",
   },
   {
     name: "Oilio",
@@ -69,6 +71,7 @@ const projects = [
     ],
     tags: ["React Native", "Expo", "typescript", "Supabase"],
     images: ["oilio-01-screens.jpg"],
+    imageNote: "ภาพประกอบแคปจาก iOS Simulator ราคาน้ำมันในภาพเป็นข้อมูลสาธารณะจาก สนพ.",
   },
   {
     name: "MechFace",
@@ -84,6 +87,7 @@ const projects = [
     ],
     tags: ["Swift", "SwiftUI", "watchOS", "WidgetKit"],
     images: ["mechface-01-watch.jpg"],
+    imageNote: "ภาพประกอบแคปจาก Apple Watch Simulator (watchOS)",
   },
   {
     name: "Check Promotion",
@@ -103,6 +107,7 @@ const projects = [
       "checkpromo-02-results.jpg",
       "checkpromo-03-suggest.jpg",
     ],
+    imageNote: "ภาพประกอบแคปจากระบบจริงที่รันบนเครื่องพัฒนา โดยใช้ข้อมูลจำลองทั้งหมด ไม่ใช่ข้อมูลของบริษัท",
   },
   {
     name: "Traffic POS",
@@ -117,6 +122,7 @@ const projects = [
     ],
     tags: ["php", "javascript", "sqlserver"],
     images: ["traffics-01-wholesale.jpg", "traffics-02-retail.jpg", "traffics-03-index.jpg"],
+    imageNote: "ภาพประกอบแคปจากระบบจริงที่รันบนเครื่องพัฒนา โดยใช้ข้อมูลจำลองทั้งหมด ไม่ใช่ข้อมูลของบริษัท",
   },
   {
     name: "Dashboard PO",
@@ -130,6 +136,7 @@ const projects = [
     ],
     tags: ["react", "nodejs", "sqlserver"],
     images: ["dashboardpo-01-summary.jpg", "dashboardpo-02-logs.jpg"],
+    imageNote: "ภาพประกอบแคปจากระบบจริงที่รันบนเครื่องพัฒนา โดยใช้ข้อมูลจำลองทั้งหมด ไม่ใช่ข้อมูลของบริษัท",
   },
   {
     name: "AB Customization",
@@ -181,6 +188,7 @@ const projects = [
     ],
     tags: ["php", "sqlserver", "bootstrap"],
     images: ["purchase.jpg"],
+    imageNote: "ภาพประกอบเป็นหน้าจอจากระบบที่ใช้งานจริง",
   },
   {
     name: "Time Attendance",
@@ -202,6 +210,7 @@ const projects = [
       "timeattendance-05-personal.jpg",
       "timeattendance-06-login.jpg",
     ],
+    imageNote: "ภาพประกอบแคปจากระบบจริงที่รันบนเครื่องพัฒนา โดยใช้ข้อมูลพนักงานจำลอง ไม่ใช่ข้อมูลพนักงานจริง",
   },
 ];
 

@@ -66,6 +66,7 @@ const ProjectRow = ({
   highlights = [],
   image,
   images,
+  imageNote,
   stats = [],
   source_code_link,
 }) => {
@@ -128,6 +129,10 @@ const ProjectRow = ({
               </button>
             ))}
           </div>
+        )}
+
+        {imageNote && (
+          <p className="mt-4 text-secondary text-[13px] leading-[20px]">{imageNote}</p>
         )}
       </div>
 
