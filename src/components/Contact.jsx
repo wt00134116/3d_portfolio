@@ -45,7 +45,7 @@ const Contact = () => {
         from_name: form.name,
         to_name: 'Pop',
         from_email: form.email,
-        to_email: 'popandcat@hotmail.com',
+        to_email: 'wt00134116@hotmail.com',
         message: form.message,
       },
       'YQWVZ0qQ2W2AlgyN0'
@@ -77,10 +77,18 @@ const Contact = () => {
         {/* ช่องทางติดต่อตรง เผื่อผู้ชมไม่สะดวกกรอกฟอร์ม */}
         <div className="mt-6 flex flex-wrap gap-3">
           <a
-            href="mailto:popandcat@hotmail.com"
+            href="https://line.me/ti/p/~popdk123"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-2 bg-[#06C755] hover:opacity-90 transition-opacity rounded-lg px-4 py-3 text-white text-[14px] font-medium"
+          >
+            LINE : popdk123
+          </a>
+          <a
+            href="mailto:wt00134116@hotmail.com"
             className="flex items-center gap-2 bg-tertiary hover:bg-black-200 transition-colors rounded-lg px-4 py-3 text-white text-[14px]"
           >
-            popandcat@hotmail.com
+            wt00134116@hotmail.com
           </a>
           <a
             href="https://github.com/wt00134116"
