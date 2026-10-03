@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useCallback, useEffect, useRef, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Decal, Float, Preload, useTexture } from '@react-three/drei';
 
@@ -10,16 +10,50 @@ import CanvasLoader from '../Loader';
 const SPACING = 3.2; // ระยะห่างระหว่างลูกบอล (world units)
 const ZOOM = 42; // 1 world unit ≈ 42px
 
+// ลากหมุนได้ทีละลูกเหมือนเดิม (ของเดิมใช้ OrbitControls ต่อลูก ซึ่งต้องมี canvas ต่อลูกด้วย)
 const Ball = ({ imgUrl, position }) => {
   const [decal] = useTexture([imgUrl]);
+  const spin = useRef();
+  const last = useRef(null);
+
+  const onPointerMove = useCallback((e) => {
+    if (!last.current || !spin.current) return;
+    spin.current.rotation.y += (e.clientX - last.current.x) * 0.01;
+    spin.current.rotation.x += (e.clientY - last.current.y) * 0.01;
+    last.current = { x: e.clientX, y: e.clientY };
+  }, []);
+
+  const endDrag = useCallback(() => {
+    last.current = null;
+    document.body.style.cursor = 'auto';
+    window.removeEventListener('pointermove', onPointerMove);
+    window.removeEventListener('pointerup', endDrag);
+  }, [onPointerMove]);
+
+  const startDrag = (e) => {
+    e.stopPropagation(); // ลากลูกที่กดเท่านั้น ไม่ลามไปลูกที่อยู่ข้างหลัง
+    last.current = { x: e.clientX, y: e.clientY };
+    document.body.style.cursor = 'grabbing';
+    window.addEventListener('pointermove', onPointerMove);
+    window.addEventListener('pointerup', endDrag);
+  };
+
+  useEffect(() => endDrag, [endDrag]);
 
   return (
     <Float speed={1.75} rotationIntensity={1} floatIntensity={2} position={position}>
-      <mesh castShadow receiveShadow scale={1.35}>
-        <icosahedronGeometry args={[1, 1]} />
-        <meshStandardMaterial color="#fff8ed" polygonOffset polygonOffsetFactor={-5} flatShading />
-        <Decal position={[0, 0, 1]} rotation={[2 * Math.PI, 0, 6.25]} map={decal} />
-      </mesh>
+      <group
+        ref={spin}
+        onPointerDown={startDrag}
+        onPointerOver={() => { if (!last.current) document.body.style.cursor = 'grab'; }}
+        onPointerOut={() => { if (!last.current) document.body.style.cursor = 'auto'; }}
+      >
+        <mesh castShadow receiveShadow scale={1.35}>
+          <icosahedronGeometry args={[1, 1]} />
+          <meshStandardMaterial color="#fff8ed" polygonOffset polygonOffsetFactor={-5} flatShading />
+          <Decal position={[0, 0, 1]} rotation={[2 * Math.PI, 0, 6.25]} map={decal} />
+        </mesh>
+      </group>
     </Float>
   );
 };
