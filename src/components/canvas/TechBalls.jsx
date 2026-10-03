@@ -58,27 +58,34 @@ const Ball = ({ imgUrl, position }) => {
   );
 };
 
-const useColumns = (count) => {
-  const columnsFor = (width) => Math.max(2, Math.min(count, Math.floor(width / 130) || 2));
-  const [columns, setColumns] = useState(() =>
-    typeof window === 'undefined' ? Math.min(count, 7) : columnsFor(window.innerWidth - 80),
-  );
+// วัดความกว้างจริงของกรอบ (ไม่ใช่ของหน้าต่าง) เพราะ canvas ถูกจำกัดความกว้างตามการจัดหน้า
+// ถ้าคำนวณจากหน้าต่าง ลูกบอลจะล้นออกนอก canvas แล้วถูกตัดขอบบนจอกว้าง
+const useContainerWidth = () => {
+  const ref = useRef(null);
+  const [width, setWidth] = useState(0);
 
   useEffect(() => {
-    const onResize = () => setColumns(columnsFor(window.innerWidth - 80));
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
-  });
+    const el = ref.current;
+    if (!el) return undefined;
+    const update = () => setWidth(el.clientWidth);
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
-  return columns;
+  return [ref, width];
 };
 
 const TechBalls = ({ technologies }) => {
-  const columns = useColumns(technologies.length);
+  const [wrapperRef, width] = useContainerWidth();
+  const slot = SPACING * ZOOM; // ความกว้างต่อ 1 ลูก (px)
+  const columns = Math.max(2, Math.min(technologies.length, Math.floor(width / slot) || 2));
   const rows = Math.ceil(technologies.length / columns);
 
   return (
-    <div className="w-full" style={{ height: rows * SPACING * ZOOM }}>
+    <div ref={wrapperRef} className="w-full" style={{ height: rows * slot }}>
+      {width > 0 && (
       <Canvas frameloop="always" orthographic camera={{ position: [0, 0, 10], zoom: ZOOM }} gl={{ preserveDrawingBuffer: true }}>
         <ambientLight intensity={0.25} />
         <directionalLight position={[0, 0, 0.05]} />
@@ -94,6 +101,7 @@ const TechBalls = ({ technologies }) => {
         </Suspense>
         <Preload all />
       </Canvas>
+      )}
     </div>
   );
 };
